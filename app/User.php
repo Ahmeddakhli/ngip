@@ -112,21 +112,20 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 
     /**
      * Return current user permissions
-     * 
+     *
      * @return App\Models\Permission collection
      */
     public function getPermissions()
     {
-        Cache::forget('user_' . $this->id . '_permissions');
         return Cache::rememberForever('user_' . $this->id . '_permissions', function () {
             return $this->permissions;
         });
     }
 
     /**
-     * Take $permission slug as parameter and check 
+     * Take $permission slug as parameter and check
      * if current user has given permission
-     * 
+     *
      * @return boolean
      */
     public function hasPermission($permission)
@@ -141,9 +140,9 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     }
 
     /**
-     * Take $group slug as parameter and check 
+     * Take $group slug as parameter and check
      * if current user belongs to this group
-     * 
+     *
      * @return boolean
      */
     public function is($group)
@@ -161,7 +160,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 
     /**
      * Return children users under current user
-     * 
+     *
      * @return App\User collection
      */
     public function getChildren()
@@ -172,7 +171,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         // // $count_levels = $count_levels->unique()->values()->count();
 
         // if ($count_levels) {
-        //     // 1st and 2nd Level        
+        //     // 1st and 2nd Level
         //     $group_ids = Group::where('parent_id', $this->group_id)->select('id')->get()->pluck('id')->toArray();
 
         //     // Loop to get all other groups ids
@@ -214,7 +213,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
             // $count_levels = $count_levels->unique()->values()->count();
 
             if ($count_levels) {
-                // 1st and 2nd Level        
+                // 1st and 2nd Level
                 $group_ids = Group::where('parent_id', $this->group_id)->select('id')->get()->pluck('id')->toArray();
 
                 // Loop to get all other groups ids
