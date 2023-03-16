@@ -19,7 +19,7 @@
                 <p class="w-md-50 w-100">
                     <bdi>
                         @if (App::getLocale() == 'en')
-                            Thank you "{{ $name }}" for trusting advisors Properties Group, One of our resale
+                            Thank you "{{ $name }}" for trusting ngip Properties Group, One of our resale
                             department will contact you very soon to complete your property information.
                         @else
                             شكرًا لك "{{ $name }}" على ثقتك في انلاند بروبيرتز، سيتصل بك أحد مستشارينا لقسم

@@ -18,8 +18,8 @@
         content="{{ $location['location']->meta_description? $location['location']->meta_description: $location['location']->description }}" />
     <!-- Twitter Card data -->
     <meta name='twitter:app:country' content='EG' />
-    <meta name="twitter:site" content="@advisors" />
-    <meta name="twitter:creator" content="@advisors" />
+    <meta name="twitter:site" content="@ngip" />
+    <meta name="twitter:creator" content="@ngip" />
     <meta name="twitter:title"
         content="{{ $location['location']->meta_title ? $location['location']->meta_title : $location['location']->name }}  ({{ count($location['results']) }})">
     <meta name="twitter:card" content="summary_large_image" />

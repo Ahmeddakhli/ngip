@@ -16,7 +16,7 @@
     window.Laravel = {!! json_encode([
         'user' => Auth::user(),
         'csrfToken' => csrf_token(),
-        'notification_base' => '/advisors',
+        'notification_base' => '/ngip',
         'vapidPublicKey' => config('webpush.vapid.public_key'),
         'pusher' => [
             'key' => config('broadcasting.connections.pusher.key'),

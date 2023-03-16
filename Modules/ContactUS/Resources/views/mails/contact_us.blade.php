@@ -18,7 +18,7 @@
     <br>
     
     <div style="text-align: left; color:black;">
-        A New message from advisors Website. Here are the details:
+        A New message from ngip Website. Here are the details:
     </div>
     
     <br>
@@ -63,7 +63,7 @@
     <br>
     <br>
     <div style="text-align: center;">
-        <h6 style="color:black;">Note: This is automated email generated from <a href="{{route('front.home')}}">advisors</a> website </h6>
+        <h6 style="color:black;">Note: This is automated email generated from <a href="{{route('front.home')}}">ngip</a> website </h6>
     </div>
 
 </div>

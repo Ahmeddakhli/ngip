@@ -20,8 +20,8 @@ $page_name = '';
         content="{{ $developer['developer']->meta_description? $developer['developer']->meta_description: strip_tags(substr($developer['developer']->description, 0, 150)) }}" />
     <!-- Twitter Card data -->
     <meta name='twitter:app:country' content='EG' />
-    <meta name="twitter:site" content="@advisors" />
-    <meta name="twitter:creator" content="@advisors" />
+    <meta name="twitter:site" content="@ngip" />
+    <meta name="twitter:creator" content="@ngip" />
     <meta name="twitter:title"
         content="{{ $developer['developer']->meta_title? $developer['developer']->meta_title: $developer['developer']->developer }}  ({{ $developer['developer']->projects_count }})">
     <meta name="twitter:card" content="summary_large_image" />

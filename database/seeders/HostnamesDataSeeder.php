@@ -25,7 +25,7 @@ class HostnamesDataSeeder extends Seeder
         DB::table('host_details')->insert([
             [
                 'id' => 2,
-                'fqdn' => 'advisors.laravel.com',
+                'fqdn' => 'ngip.laravel.com',
                 'package_id' => 1,
                 'owner_email' => 'support@8worx.com',
                 'owner_mobile_number' =>'01207395400'

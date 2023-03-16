@@ -58,7 +58,7 @@
         <br>
         <div style="text-align: center;">
             <h6 style="color:black;">Note: This is automated email generated from <a
-                    href="{{ route('front.home') }}">advisors</a> website </h6>
+                    href="{{ route('front.home') }}">ngip</a> website </h6>
         </div>
 
     </div>

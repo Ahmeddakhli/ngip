@@ -11,7 +11,7 @@
 		<title>@yield('title') | {{env('APP_NAME')}}</title>
 		<meta name="description" content="@yield('page_description')">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 		@include('8x.inc.header-scripts')
 		@stack('header-scripts')
 	</head>

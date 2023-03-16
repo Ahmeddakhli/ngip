@@ -1034,7 +1034,7 @@ class ImportIUnits implements ToCollection, WithHeadingRow
         curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 60);
         curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl_handle, CURLOPT_FOLLOWLOCATION, TRUE);
-        curl_setopt($curl_handle, CURLOPT_USERAGENT, 'advisors');
+        curl_setopt($curl_handle, CURLOPT_USERAGENT, 'ngip');
         $query = curl_exec($curl_handle);
         $info = curl_getinfo($curl_handle, CURLINFO_HTTP_CODE);
         $mime = curl_getinfo($curl_handle, CURLINFO_CONTENT_TYPE);

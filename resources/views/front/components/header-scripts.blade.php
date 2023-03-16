@@ -3,8 +3,9 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="author" content="advisors">
-<meta name="publisher" content="advisors">
+<meta name="author" content="ngip">
+<meta name="publisher" content="ngip">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 <meta name="yandex-verification" content="" />
 <meta name="google-site-verification" content="" />
 <link rel="canonical" href="{{ Request::fullUrl() }}">

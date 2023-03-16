@@ -197,7 +197,7 @@ foreach ($socials as $social) {
         {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "advisors Properties",
+            "name": "ngip Properties",
             "image":"{{ URL::asset('/front/img/logo_1.png') }}",
             "url": "{{ env('APP_URL_FULL') }}",
             "address": {

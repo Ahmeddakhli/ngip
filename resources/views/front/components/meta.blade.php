@@ -6,8 +6,8 @@
 <meta name="description" content="{{isset($created_at) ? ($created_at ?? '') : ''}} {{ strip_tags($meta->description) }}" />
 <!-- Twitter Card data -->
 <meta name='twitter:app:country' content='EG' />
-<meta name="twitter:site" content="@advisors" />
-<meta name="twitter:creator" content="@advisors" />
+<meta name="twitter:site" content="@ngip" />
+<meta name="twitter:creator" content="@ngip" />
 <meta name="twitter:title" content="{{ $meta->title }}">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="{{ URL::asset('/front/img/logo_1.png') }}">

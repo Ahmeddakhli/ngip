@@ -15,8 +15,8 @@
 <meta itemprop="description" content="{{ strip_tags($single_unit->meta_description ? $single_unit->meta_description : substr($single_unit->description, 0, 150)) }}" />
 <!-- Twitter Card data -->
 <meta name='twitter:app:country' content='EG' />
-<meta name="twitter:site" content="@advisors" />
-<meta name="twitter:creator" content="@advisors" />
+<meta name="twitter:site" content="@ngip" />
+<meta name="twitter:creator" content="@ngip" />
 <meta name="twitter:title" content="{{$single_unit->meta_title ? $single_unit->meta_title : $single_unit->title}}">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="{{ URL::asset('/front/img/logo_1.png') }}">
@@ -102,7 +102,7 @@ $('[data-fancybox]').fancybox(defaults);
     "description": "{{$single_unit->meta_description}}",
     "sku": "{{$single_unit->id}}",
     "mpn": "{{$single_unit->id}}",
-    "brand": { "@type": "Brand", "name": "{{$single_unit->project ? $single_unit->project->project : 'advisors Properties'}}" },
+    "brand": { "@type": "Brand", "name": "{{$single_unit->project ? $single_unit->project->project : 'ngip Properties'}}" },
     "review": {
       "@type": "Review",
       "reviewRating": {
@@ -110,7 +110,7 @@ $('[data-fancybox]').fancybox(defaults);
         "ratingValue": "4",
         "bestRating": "5"
       },
-      "author": { "@type": "Organization", "name": "advisors Properties" }
+      "author": { "@type": "Organization", "name": "ngip Properties" }
     },
     "aggregateRating": {
       "@type": "AggregateRating",

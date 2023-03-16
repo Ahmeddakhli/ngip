@@ -74,7 +74,7 @@
                 <div class="col-md-10">
                     <p class="p-0">
                         @if (App::getLocale() == 'en')
-                            We use cookies. When you interact with advisors web site, we'd like to provide you with the
+                            We use cookies. When you interact with ngip web site, we'd like to provide you with the
                             best experience that we can. Cookies are used to help personalise your online experience,
                             tailor advertising, and learn how visitors use our website. If you continue to use this
                             site, you consent to our use of cookies
