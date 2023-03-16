@@ -35,16 +35,19 @@
          <h2 class="capitalize"><a href="#">{{ __('main.featured_units') }}</a></h2>
          <div class="flex-box">
              <!-- open flex-box -->
-             @for ($i = 0; $i < 3; $i++)
-                 @include('front.components.unit', ['unit' => $units[$i]])
-             @endfor
+             @if (count($units))
+                 @for ($i = 0; $i < 3; $i++)
+                     @include('front.components.unit', ['unit' => $units[$i]])
+                 @endfor
+             @endif
+
              <!-- close feature-item -->
          </div>
          <!-- close flex-box -->
          <div class="btn-featured">
              <!-- open btn-featured -->
              <a href="{{ route('front.properties') }}">
-                 <p>  {{ __('main.all_properties') }}</p>
+                 <p> {{ __('main.all_properties') }}</p>
                  <div class="hoverBtn"></div>
                  <div class="hoverBtn-bottom"></div>
              </a>
