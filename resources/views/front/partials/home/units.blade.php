@@ -27,32 +27,31 @@
  @endif
  @push('scripts')
  @endpush --}}
-
- <div class="featured-properties" id="featured">
-     <!-- open featured-properties -->
-     <div class="container">
-         <!-- open container -->
-         <h2 class="capitalize"><a href="#">{{ __('main.featured_units') }}</a></h2>
-         <div class="flex-box">
-             <!-- open flex-box -->
-             @if (count($units))
+ @if (count($units))
+     <div class="featured-properties" id="featured">
+         <!-- open featured-properties -->
+         <div class="container">
+             <!-- open container -->
+             <h2 class="capitalize"><a href="#">{{ __('main.featured_units') }}</a></h2>
+             <div class="flex-box">
+                 <!-- open flex-box -->
                  @for ($i = 0; $i < 3; $i++)
                      @include('front.components.unit', ['unit' => $units[$i]])
                  @endfor
-             @endif
 
-             <!-- close feature-item -->
+                 <!-- close feature-item -->
+             </div>
+             <!-- close flex-box -->
+             <div class="btn-featured">
+                 <!-- open btn-featured -->
+                 <a href="{{ route('front.properties') }}">
+                     <p> {{ __('main.all_properties') }}</p>
+                     <div class="hoverBtn"></div>
+                     <div class="hoverBtn-bottom"></div>
+                 </a>
+             </div>
+             <!-- close btn-featured -->
          </div>
-         <!-- close flex-box -->
-         <div class="btn-featured">
-             <!-- open btn-featured -->
-             <a href="{{ route('front.properties') }}">
-                 <p> {{ __('main.all_properties') }}</p>
-                 <div class="hoverBtn"></div>
-                 <div class="hoverBtn-bottom"></div>
-             </a>
-         </div>
-         <!-- close btn-featured -->
+         <!-- close container -->
      </div>
-     <!-- close container -->
- </div>
+ @endif
