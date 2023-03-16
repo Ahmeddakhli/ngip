@@ -34,7 +34,6 @@
         </div>
       </section>
 @endif --}}
-@dd($blogs)
 @if (count($blogs))
     <div class="latest-news" id="news">
         <!-- open latest-news -->
