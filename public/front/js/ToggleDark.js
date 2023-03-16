@@ -31,7 +31,7 @@ function loadTheme() {
     }else{
       if (document.querySelector("#logo")) {
         document.querySelector("#logo").removeAttribute("src");
-        document.querySelector("#logo").setAttribute("src", '/front/img/logo_1.png');
+        document.querySelector("#logo").setAttribute("src", 'https://demo.8worx.com/ngip-ree/public/front/img/logo_1.png');
       }
       if (!document.querySelector(".overlay-section")) return;
       let overlays = document.querySelectorAll(".overlay-section");
