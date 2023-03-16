@@ -61,7 +61,7 @@
             <span><i class="far fa-clock"></i>{{ $blog->created_at }}</span>
         </div>
         <!-- close icons -->
-        <p>{{ $blog->description }} </p>
+        <p>{!! $blog->description !!} </p>
 
         <a href="{{ route('front.single_blog', ['id' => $blog->id, 'slug' => $blog->slug]) }}"
             class="link-primary text-decoration-underline mt-3" target="_blank" rel="noopener" noreferrer>Read more...

@@ -10,7 +10,7 @@
                       <!-- open services -->
                       <div class="icon"><i class="{{ $service->icon }}"></i></div>
                       <p>
-                          {{ $service->description }}
+                          {!! $service->description !!}
                       </p>
                       <!-- <a href="#">Consultant Service &rarr;</a> -->
                   </div>
