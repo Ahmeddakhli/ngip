@@ -1,6 +1,6 @@
 
 
-  <script src="{{ URL::asset('front/js/jquery-3.6.0.min.js')}}?ver={{ env('FILES_VER')}}"></script>
+  {{-- <script src="{{ URL::asset('front/js/jquery-3.6.0.min.js')}}?ver={{ env('FILES_VER')}}"></script> --}}
   <script src="{{ URL::asset('front/js/bootstrap.bundle.min.js')}}?ver={{env('FILES_VER')}}"></script>
   <script src="{{ URL::asset('front/js/multiple-select.min.js')}}?ver={{env('FILES_VER')}}"></script>
   <script src="{{ URL::asset('front/js/swiper-bundle.min.js')}}?ver={{ env('FILES_VER')}}"></script>
@@ -48,46 +48,46 @@ type="text/javascript"></script>
         e.preventDefault()
         var form = $(this).closest('form');
 
-        // /* Parsley validate front-end */
-        // if (!form.parsley().isValid()) {
-        //     // Display notification
+        /* Parsley validate front-end */
+        if (!form.parsley().isValid()) {
+            // Display notification
 
-        //     $.unblockUI();
+            $.unblockUI();
 
-        //     $.alert("{{ __('main.oh_snap_change_a_few_thing_up_and_try_submitting_again') }}", {
-        //         title: '',
-        //         type: 'warning',
-        //         position: ['top-right', [0, 20]],
-        //     });
-        //     form.find('[data-parsley-type]').each(function(i, v) {
-        //         $(this).parsley().validate({
-        //             focusInvalid: false,
-        //             invalidHandler: function() {
-        //                 $(this).find(":input.error:first").focus();
-        //             }
-        //         });
+            $.alert("{{ __('main.oh_snap_change_a_few_thing_up_and_try_submitting_again') }}", {
+                title: '',
+                type: 'warning',
+                position: ['top-right', [0, 20]],
+            });
+            form.find('[data-parsley-type]').each(function(i, v) {
+                $(this).parsley().validate({
+                    focusInvalid: false,
+                    invalidHandler: function() {
+                        $(this).find(":input.error:first").focus();
+                    }
+                });
 
-        //         return;
-        //     });
-        //     form.find('[data-parsley-pattern]').each(function(i, v) {
-        //         $(this).parsley().validate({
-        //             focusInvalid: false,
-        //             invalidHandler: function() {
-        //                 $(this).find(":input.error:first").focus();
-        //             }
-        //         });
+                return;
+            });
+            form.find('[data-parsley-pattern]').each(function(i, v) {
+                $(this).parsley().validate({
+                    focusInvalid: false,
+                    invalidHandler: function() {
+                        $(this).find(":input.error:first").focus();
+                    }
+                });
 
-        //         return;
-        //     });
-        //     form.parsley().validate({
-        //         focusInvalid: false,
-        //         invalidHandler: function() {
-        //             $(this).find(":input.error:first").focus();
-        //         }
-        //     });
+                return;
+            });
+            form.parsley().validate({
+                focusInvalid: false,
+                invalidHandler: function() {
+                    $(this).find(":input.error:first").focus();
+                }
+            });
 
-        //     return;
-        // }
+            return;
+        }
 
         var url = "{{ route('front.subscribe') }}";
         var headers = {

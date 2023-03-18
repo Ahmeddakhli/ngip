@@ -811,13 +811,28 @@
              </div>
              {{-- @endif --}}
              <div class="ask">
-                 <h5>Interested! Ask about this unit</h5>
-                 <form>
-                     <input type="text" required placeholder="Your Name" id='focus-ask' />
-                     <input type="text" required placeholder="Your Mobile" />
-                     <input type="email" required placeholder="Your Email" />
-                     <textarea placeholder="Your Message" required rows="7"></textarea>
-                     <button>SUBMIT</button>
+                 <h5>{{ __("main.contact_us") }}</h5>
+                 <form action="{{ route('contact_us.contact_us.store') }}" method="POST" class="form-contact"
+                     data-parsley-validate>
+                     @csrf
+                     <input type="hidden" name="link" value="{{ Request::url() }}">
+                     <input type="hidden" name="type" value="set_a_visit">
+                     <input type="hidden" name="position" value="{{ isset($position) ? $position : null }}">
+                     <input type="hidden" name="city_id" value="{{ isset($city_id) ? $city_id : null }}">
+                     <input type="hidden" name="model_name" value="{{ isset($model_name) ? $model_name : null }}">
+                     <input type="text" class="form-control" inputmode="text" name="full_name"
+                         placeholder="{{ __('users.full_name') }}" data-parsley-trigger="change focusout" required
+                         data-parsley-required-message="{{ __('main.please_enter_your_name') }}">
+                     <input type="email" class="form-control" inputmode="email" name="email"
+                         placeholder="{{ __('users.email') }}" required
+                         data-parsley-required-message="{{ __('main.please_enter_your_email') }}">
+                     <input type="text" class="form-control" inputmode="tel"
+                         placeholder="{{ __('users.mobile_number') }}" name="phone"
+                         data-parsley-trigger="change focusout" required
+                         data-parsley-required-message="{{ __('main.please_enter_your_mobile_number') }}">
+                     <textarea class="form-control" inputmode="text" placeholder="{{ __('contactus::contact_us.message') }}" name="message"
+                         data-parsley-trigger="change focusout"></textarea>
+                     <button type="submit" class="site-btn contact-from">{{ __('main.send') }}</button>
                  </form>
              </div>
          </div> <!-- close flex-box -->
@@ -830,34 +845,34 @@
                      <div class="left">
                          <p><i class="fas fa-map-marker"></i>
                              @if ($single_unit->city)
-                                        <?php $locations_array = []; ?>
-                                             @if ($single_unit->country)
-                                                 <?php array_push($locations_array, $single_unit->country->name); ?>
-                                             @endif
-                                             @if ($single_unit->region)
-                                                 <?php array_push($locations_array, $single_unit->region->name); ?>
-                                             @endif
-                                             @if ($single_unit->city)
-                                                 <?php array_push($locations_array, $single_unit->city->name); ?>
-                                             @endif
-                                             @if ($single_unit->area_place)
-                                                 <?php array_push($locations_array, $single_unit->area_place->name); ?>
-                                             @endif
-                                             @if (count($locations_array))
-                                                 {{-- <h6 class="text-capitalize"> --}}
-                                                     {{ implode(', ', $locations_array) }}
-                                                 {{-- </h6> --}}
-                                             @endif
-                                     </address>
-                                 </div>
-                             @endif
-                         </p>
-                         <div class="right">
-                            <a href="#">{{ $single_unit->price }}EGP</a>
-                        </div>
+                                 <?php $locations_array = []; ?>
+                                 @if ($single_unit->country)
+                                     <?php array_push($locations_array, $single_unit->country->name); ?>
+                                 @endif
+                                 @if ($single_unit->region)
+                                     <?php array_push($locations_array, $single_unit->region->name); ?>
+                                 @endif
+                                 @if ($single_unit->city)
+                                     <?php array_push($locations_array, $single_unit->city->name); ?>
+                                 @endif
+                                 @if ($single_unit->area_place)
+                                     <?php array_push($locations_array, $single_unit->area_place->name); ?>
+                                 @endif
+                                 @if (count($locations_array))
+                                     {{-- <h6 class="text-capitalize"> --}}
+                                     {{ implode(', ', $locations_array) }}
+                                     {{-- </h6> --}}
+                                 @endif
+                                 </address>
                      </div>
+                     @endif
+                     </p>
+                     <div class="right">
+                         <a href="#">{{ $single_unit->price }}EGP</a>
+                     </div>
+                 </div>
 
-                  <!-- close row -->
+                 <!-- close row -->
                  <h3> {{ __('main.unit_details') }}</h3>
                  <div class="row property-details">
                      <div>
@@ -881,8 +896,8 @@
                                  {{ __('main.area') }}:{{ $single_unit->area }} {{ $single_unit->area_unit }}
                              </p>
                          @endif
-                        </div>
-                    <div>
+                     </div>
+                     <div>
                          @if ($single_unit->offering_type)
                              <p><i class="fas fa-th"></i>
                                  {{ __('inventory::inventory.offering_type') }}:{{ $single_unit->offering_type }}
@@ -1044,94 +1059,95 @@
                              @include('front.components.unit', ['unit' => $relates[$i]])
                          </div> --}}
 
-                          <!-- close project -->
-                          <div class="project">
-                            <!-- open project -->
-                            <a href="single-list.html">
-                                    @forelse($relates[$i]->attachments as $attachment)
-                                        @if ($loop->index == 0)
-                                            <meta itemprop="image"
-                                                content="{{ file_exists(public_path('/storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension)) ? asset('storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension) : $attachment->url }}" />
-                                            <img class="unit-img" onerror="this.remove()"
-                                                src="{{ file_exists(public_path('/storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension)) ? asset('storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension) : $attachment->url }}"
-                                                alt="{{ $attachment->alt }}" itemprop="image">
-                                        @break
-                                    @endif
-                                @empty
-                                    <meta itemprop="image" content="{{ asset('front/img/logo_1.png') }}" />
-                                    <img class="" onerror="this.remove()"
-                                        src="{{ asset('front/img/logo_1.png') }}" alt="{{ $relates[$i]->title }}" itemprop="image">
-                                @endforelse                                <div class="overlay">
-                                    <!-- open overlay -->
-                                    <div class="details">
-                                        <!-- open details -->
-                                        <h3 class="capitalize">{{ $relates[$i]->city->name }}</h3>
-                                        <p class="price">{{ __('main.starting_price') }}</p>
-                                        <span>{{  $relates[$i]->price }} EGP</span>
-                                    </div> <!-- close details -->
-                                </div> <!-- close overlay -->
-                            </a>
-                        </div> <!-- close project -->
+                         <!-- close project -->
+                         <div class="project">
+                             <!-- open project -->
+                             <a href="single-list.html">
+                                 @forelse($relates[$i]->attachments as $attachment)
+                                     @if ($loop->index == 0)
+                                         <meta itemprop="image"
+                                             content="{{ file_exists(public_path('/storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension)) ? asset('storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension) : $attachment->url }}" />
+                                         <img class="unit-img" onerror="this.remove()"
+                                             src="{{ file_exists(public_path('/storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension)) ? asset('storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension) : $attachment->url }}"
+                                             alt="{{ $attachment->alt }}" itemprop="image">
+                                     @break
+                                 @endif
+                             @empty
+                                 <meta itemprop="image" content="{{ asset('front/img/logo_1.png') }}" />
+                                 <img class="" onerror="this.remove()"
+                                     src="{{ asset('front/img/logo_1.png') }}" alt="{{ $relates[$i]->title }}"
+                                     itemprop="image">
+                             @endforelse
+                             <div class="overlay">
+                                 <!-- open overlay -->
+                                 <div class="details">
+                                     <!-- open details -->
+                                     <h3 class="capitalize">{{ $relates[$i]->city->name }}</h3>
+                                     <p class="price">{{ __('main.starting_price') }}</p>
+                                     <span>{{ $relates[$i]->price }} EGP</span>
+                                 </div> <!-- close details -->
+                             </div> <!-- close overlay -->
+                         </a>
+                     </div> <!-- close project -->
+                 @endfor
+             </div> <!-- close related -->
+         @endif
 
-                     @endfor
-                 </div> <!-- close related -->
-             @endif
+     </div> <!-- close flex-box -->
+ </div> <!-- close container -->
+</div> <!-- close single-list -->
+@push('scripts')
+ <script src="https://maps.googleapis.com/maps/api/js?key={{ env('MAP_KEY') }}&callback=initMap&&libraries=places"
+     defer></script>
+ <script>
+     //  GOOGLE MAPS API
 
-         </div> <!-- close flex-box -->
-     </div> <!-- close container -->
- </div> <!-- close single-list -->
- @push('scripts')
-     <script src="https://maps.googleapis.com/maps/api/js?key={{ env('MAP_KEY') }}&callback=initMap&&libraries=places"
-         defer></script>
-     <script>
-         //  GOOGLE MAPS API
+     function initMap() {
+         var latLng;
+         @if ($single_unit->latitude && $single_unit->longitude)
+             latLng = {
+                 lat: @json($single_unit->latitude),
+                 lng: @json($single_unit->longitude)
+             }; // latitude and longitude
+         @endif
 
-         function initMap() {
-             var latLng;
-             @if ($single_unit->latitude && $single_unit->longitude)
-                 latLng = {
-                     lat: @json($single_unit->latitude),
-                     lng: @json($single_unit->longitude)
-                 }; // latitude and longitude
-             @endif
+         var map;
 
-             var map;
+         var options = {
+             zoom: 9,
+             center: latLng,
+             mapTypeId: 'roadmap', // hybrid , satellite , roadmap ,
+         };
 
-             var options = {
-                 zoom: 9,
-                 center: latLng,
-                 mapTypeId: 'roadmap', // hybrid , satellite , roadmap ,
-             };
+         map = new google.maps.Map(document.getElementById("map"), options);
 
-             map = new google.maps.Map(document.getElementById("map"), options);
-
-             var marker = new google.maps.Marker({
-                 position: latLng,
-                 map: map,
-                 icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-                 animation: google.maps.Animation.BOUNCE,
-                 title: '{{ $single_unit->title }}'
-             });
-
-
-             var infoWindow = new google.maps.InfoWindow({
-                 content: '<p>{{ $single_unit->title }}</p>'
-             })
-
-             marker.addListener('click', function() {
-                 infoWindow.open(map, marker);
-             });
+         var marker = new google.maps.Marker({
+             position: latLng,
+             map: map,
+             icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+             animation: google.maps.Animation.BOUNCE,
+             title: '{{ $single_unit->title }}'
+         });
 
 
-             google.maps.event.addListener(marker, 'click', function() {
-                 var pos = map.getZoom();
-                 map.setZoom(12);
-                 map.setCenter(marker.getPosition());
-                 window.setTimeout(function() {
-                     map.setZoom(pos);
-                 }, 3000);
-             });
+         var infoWindow = new google.maps.InfoWindow({
+             content: '<p>{{ $single_unit->title }}</p>'
+         })
 
-         }
-     </script>
- @endpush
+         marker.addListener('click', function() {
+             infoWindow.open(map, marker);
+         });
+
+
+         google.maps.event.addListener(marker, 'click', function() {
+             var pos = map.getZoom();
+             map.setZoom(12);
+             map.setCenter(marker.getPosition());
+             window.setTimeout(function() {
+                 map.setZoom(pos);
+             }, 3000);
+         });
+
+     }
+ </script>
+@endpush

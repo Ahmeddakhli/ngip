@@ -294,12 +294,13 @@
         <nav class="primary-nav">
             <ul class="menu-bar-links">
                 <li>
-                    <a class="active" href="{{ route('front.home') }}">{{ __('main.home_title') }}
+                    <a @if (Route::currentRouteName() == 'front.home')  class="active" @endif
+                        href="{{ route('front.home') }}">{{ __('main.home_title') }}
                     </a>
                 </li>
                 <li>
-                    <a href=" {{ route('front.properties') }}">{{ __('main.properties') }}</a>
-
+                    <a href=" {{ route('front.properties') }}"
+                        @if (Route::currentRouteName() == 'front.properties') class="active" @endif>{{ __('main.properties') }}</a>
                 </li>
                 {{-- <li>
                     <a href="{{ route('front.projects') }}">
@@ -317,7 +318,7 @@
                     </li> --}}
                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" @if (Route::currentRouteName() == 'front.projects') class="active" @endif>
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ __('main.projects') }}
@@ -338,18 +339,21 @@
                     </ul>
                 </div>
                 <li>
-                    <a class=""
+                    <a @if (Route::currentRouteName() == 'front.developers') class="active" @endif
                         href="{{ route('front.developers') }}">{{ __('inventory::inventory.developers') }}</a>
                 </li>
                 <li>
-                    <a href="{{ route('front.blogs') }}">{{ __('main.blog') }}</a>
+                    <a @if (Route::currentRouteName() == 'front.blogs') class="active" @endif
+                    href="{{ route('front.blogs') }}">{{ __('main.blog') }}</a>
                 </li>
                 <li>
-                    <a class="" href="{{ route('front.about') }}">{{ __('main.about_us') }}</a>
+                    <a @if (Route::currentRouteName() == 'front.about') class="active" @endif
+                     href="{{ route('front.about') }}">{{ __('main.about_us') }}</a>
                 </li>
-                {{-- <li>
-                    <a class="" href="{{ route('front.contact-us') }}">{{ __('main.contact_us') }}</a>
-                </li> --}}
+                <li>
+                    <a @if (Route::currentRouteName() == 'front.contact-us') class="active" @endif
+                     href="{{ route('front.contact-us') }}">{{ __('main.contact_us') }}</a>
+                </li>
                 <li>
                     @foreach (LaravelLocalization::getSupportedLanguagesKeys() as $locale)
                         @if (App::getLocale() == 'en')

@@ -374,6 +374,10 @@
     @endif
 </script> --
 @endpush --}}
+<br>
+<br>
+<br>
+<br>
 <form class="search-form" action=" {{ isset($url) ? $url : route('front.properties') }}" method="GET">
     @csrf
     <div class="row wow fadeInDown" data-wow-duration="2s" data-wow-delay="1s">
@@ -382,8 +386,8 @@
     </div> <!-- close row -->
     <div class="select wow fadeInUp" data-wow-duration="2s" data-wow-delay="1s">
         <!-- open select -->
-        <select style="width: 150px" placeholder="{{ __('keywords::key_words.region') }}" name="region_id[]">
-            <option value="">{{ __('keywords::key_words.region') }}</option>
+        <select style="width: 150px" placeholder="{{ __('keywords::key_words.select_region') }}" name="region_id[]">
+            <option value="">{{ __('keywords::key_words.select_region') }}</option>
             @foreach ($regions as $region)
                 <option value="{{ $region->id }}" @if (request('region_id') && in_array($region->id, request('region_id'))) selected @endif>
                     {{ $region->name }}</option>

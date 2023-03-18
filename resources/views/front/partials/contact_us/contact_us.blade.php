@@ -1,4 +1,4 @@
-<nav aria-label="breadcrumb">
+{{-- <nav aria-label="breadcrumb">
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -13,7 +13,7 @@
     <div class="container">
         <div class="section-title">
             <h1 class="title h2">{{ __('main.contact_us') }}</h1>
-            {{-- <p>Talk to us about whatever you like, ask us a question or tell us what you want. We're all ears.</p> --}}
+            {{-- <p>Talk to us about whatever you like, ask us a question or tell us what you want. We're all ears.</p> --
         </div>
 
         <div class="row mt-5">
@@ -350,4 +350,128 @@
             });
         });
     </script>
-@endpush
+@endpush --}}
+<div class="contact-page">
+    <div class="container">
+        <div class="go-back">
+            <a href="{{ route('front.home') }}"><i class="fa fa-home"></i>{{ __('main.home_title') }}</a>
+            <span><i class="breadcrumb-arrow"></i>{{ __('main.contact_us') }}</span>
+        </div>
+
+        <div class="flex-box">
+
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4004.6081725838685!2d31.253223482200383!3d29.95920059483447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145847f1d5b64673%3A0x13ebd56f38d8416b!2sElmaadi%20hotel!5e0!3m2!1sar!2sro!4v1676796068967!5m2!1sar!2sro"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="contact-us">
+                <h2>{{ __('main.contact_us') }}</h2>
+                <form action="{{ route('contact_us.contact_us.store') }}" method="POST" class="form-contact"
+                    data-parsley-validate>
+                    @csrf
+                    <input type="hidden" name="link" value="{{ Request::url() }}">
+                    {{-- <ul class="nav mb-3">
+                    <li class="form-check form-check-inline">
+                        <input type="radio" name="type" class="form-check-input" id="call-req" value="request_a_call">
+                        <label class="form-check-label" for="call-req">{{ __('main.request_a_call') }}</label>
+                    </li>
+                    <li class="form-check form-check-inline">
+                        <input type="radio" name="type" class="form-check-input" id="meeting-req" value="set_a_visit">
+                        <label class="form-check-label" for="meeting-req">{{ __('main.set_a_visit') }}</label>
+                    </li>
+                </ul> --}}
+                    <input type="hidden" name="type" class="form-check-input" value="request_a_call">
+
+
+                    <div class="input-group ">
+                        {{-- <span class="input-group-text">
+                        <i class="ri-calendar-check-fill"></i>
+                    </span> --}}
+                        {{-- <input type="text" class="full-date-input form-control" name="best_time_to_call_from" placeholder="Best time to reach"> --}}
+                    </div>
+
+                    {{-- <div class="form-floating "> --}}
+                    <input type="text" class="form-control" inputmode="text" name="full_name"
+                        placeholder="{{ __('users.full_name') }}" data-parsley-trigger="change focusout" required
+                        data-parsley-required-message="{{ __('main.please_enter_your_name') }}">
+                    {{-- <label>Name</label> --}}
+                    {{-- </div> --}}
+                    {{-- <div class="form-floating "> --}}
+                    <input type="email" class="form-control" inputmode="email" name="email"
+                        placeholder="{{ __('users.email') }}" required
+                        data-parsley-required-message="{{ __('main.please_enter_your_email') }}">
+                    {{-- <label class="contact-label">{{ __('users.email') }}</label> --}}
+                    {{-- </div> --}}
+                    {{-- <div class="form-floating "> --}}
+                    <input type="text" class="form-control" inputmode="tel"
+                        placeholder="{{ __('users.mobile_number') }}" name="phone"
+                        data-parsley-trigger="change focusout" required
+                        data-parsley-required-message="{{ __('main.please_enter_your_mobile_number') }}">
+                    {{-- <label class="contact-label">{{ __('users.mobile_number') }}</label> --}}
+                    {{-- </div> --}}
+                    {{-- <div class="form-floating"> --}}
+                    <textarea class="form-control" inputmode="text" placeholder="{{ __('contactus::contact_us.message') }}" name="message"
+                        data-parsley-trigger="change focusout"></textarea>
+                    {{-- <label class="contact-label">{{ __('contactus::contact_us.message') }}</label> --}}
+                    {{-- </div> --}}
+                    {{-- <div class="mt-2"> --}}
+                    <button type="submit" class="site-btn contact-from">{{ __('main.send') }}</button>
+                    {{-- </div> --}}
+                </form>
+            </div> <!-- close contact-us -->
+        </div> <!-- close flex-box -->
+
+        <div class="contact-box-info">
+            <h3>{{ __('main.contact_us') }}</h3>
+            <ul>
+                <li>
+                    <h4>{{ __('locations::location.address') }}:</h4>
+                    @foreach ($contacts as $key => $contact)
+                        @if ($key == 'address')
+                            @foreach ($contact as $address)
+                                <span>
+                                    @if (App::getLocale() == 'ar')
+                                        <p> <i class="fas fa-map-marker-alt"></i>{{ $address->contact_ar }}</p>
+                                    @else
+                                        <p><i class="fas fa-map-marker-alt"></i> {{ $address->contact }}</p>
+                                    @endif
+                                </span>
+                            @endforeach
+                        @endif
+                    @endforeach
+                </li>
+                <li>
+                    <h4>{{ __('users.mobile_number') }}:</h4>
+                    @foreach ($contacts as $key => $contact)
+                        @if ($key == 'phone')
+                            @foreach ($contact as $phone)
+                                <span><i class="fas fa-phone-volume fa-lg"></i>
+                                    <b>{{ __('users.mobile_number') }}: </b> <bdi>+{{ $phone->contact }}</bdi></span>
+                            @endforeach
+                        @endif
+                    @endforeach
+                </li>
+                <li>
+                    <h4>{{ __('main.email') }}:</h4>
+
+                    @foreach ($contacts as $key => $contact)
+                        @if ($key == 'email')
+                            @foreach ($contact as $email)
+                            <span><b>{{ __('main.email') }}: </b>
+                                <i class="far fa-envelope"></i>
+                                {{ $email->contact }}
+                            </span>
+
+
+                            @endforeach
+                        @endif
+                    @endforeach
+                </li>
+            </ul>
+
+
+        </div> <!-- close contact-box-info -->
+    </div> <!-- close container -->
+</div> <!-- close contact-page -->

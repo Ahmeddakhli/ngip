@@ -1,4 +1,4 @@
-    <!-- START BREADCRUMB -->
+    {{-- <!-- START BREADCRUMB -->
     <nav aria-label="breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
@@ -70,7 +70,7 @@
                     </div>
                 @endif
             @endif
-            {{-- @if ($units)
+            @if ($units)
         @if (count($units))
         <div class="related-units mt-5">
           <div class="section-title text-center">
@@ -104,7 +104,37 @@
           </div>
         </div>
         @endif
-        @endif --}}
+        @endif
         </div>
     </section>
-    <!-- END blogs-page  -->
+    <!-- END blogs-page  --> --}}
+    <div class="contact-page">
+        <div class="container">
+            <div class="go-back">
+                <a href="{{ route('front.home') }}"><i class="fa fa-home"></i>{{ __('main.home_title') }}</a>
+                <span><i class="breadcrumb-arrow"></i>{{ __('main.thank_you') }}</span>
+            </div>
+            <div class="flex-box">
+                <div class="check text-center mb-2">
+                    <img src="{{ URL::asset('front/img/check.png') }}" alt="right">
+                </div>
+                <div class="section-title">
+                    <h1 class="title">{{ __('main.thank_you') }} ({{ $name }})
+                        {{ __('main.for_your_intrest') }} @if ($projects) {!! $model_name !!} @endif @if ($units) {!! $model_name !!} @endif</h1>
+                    <p class="w-md-50 w-100">
+                        @if (App::getLocale() == 'en')
+                            @if ($setting->thank_you_message_en)
+                                {!! str_replace('$model_name', $model_name, preg_replace('#<a.*?>.*?</a>#i', '',$setting->thank_you_message_en)) !!}
+                            @endif
+                        @else
+                            @if ($setting->thank_you_message_ar)
+                                {!! str_replace('$model_name', $model_name, preg_replace('#<a.*?>.*?</a>#i', '', $setting->thank_you_message_ar)) !!}
+                            @endif
+                        @endif
+                    </p>
+
+                </div>
+            </div>  <!-- close contact-box-info -->
+        </div> <!-- close container -->
+    </div> <!-- close contact-page -->
+

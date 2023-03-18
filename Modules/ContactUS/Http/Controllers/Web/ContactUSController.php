@@ -39,14 +39,18 @@ class ContactUSController extends Controller
         // Create the contact us
         $data = $request->all();
         $contact_us = $action->execute($data);
+        if ($contact_us) {
+            return redirect()->route('front.thankYou', ['city_id' => isset($data['city_id']) ? $data['city_id'] : null, 'position' => isset($data['position']) ?$data['position'] : null, 'name' => $data['full_name'], 'model_name' => isset($data['model_name']) ? $data['model_name'] : null, 'link' => isset($data['link'])? $data['link'] : null]);
+        } else {
+            return abort(404);
+        }
+        // // Return the response
+        // $resp = new ServiceResponse;
+        // $resp->message = trans('contactus::contact_us.thanks_for_message_us');
+        // $resp->status = true;
+        // $resp->data = ['redirect_to' => route('front.thankYou', ['city_id' => isset($data['city_id']) ? $data['city_id'] : null, 'position' => isset($data['position']) ? $data['position'] : null, 'name' => $data['full_name'], 'model_name' => isset($data['model_name']) ? $data['model_name'] : null, 'link' => isset($data['link']) ? $data['link'] : null])];
 
-        // Return the response
-        $resp = new ServiceResponse;
-        $resp->message = trans('contactus::contact_us.thanks_for_message_us');
-        $resp->status = true;
-        $resp->data = ['redirect_to' => route('front.thankYou', ['city_id' => isset($data['city_id']) ? $data['city_id'] : null, 'position' => isset($data['position']) ? $data['position'] : null,'name'=> $data['full_name'],'model_name' => isset($data['model_name']) ? $data['model_name'] : null,'link' => isset($data['link']) ? $data['link'] : null])];
-        
-        return response()->json($resp, 200);
+        // return response()->json($resp, 200);
     }
 
 
@@ -220,7 +224,7 @@ class ContactUSController extends Controller
         // Auth user
         $auth_user = Auth::user();
 
-        // Find contact us 
+        // Find contact us
         $contact_us = ContactUs::find($id);
 
         // If ContactUs does not exist, return error div

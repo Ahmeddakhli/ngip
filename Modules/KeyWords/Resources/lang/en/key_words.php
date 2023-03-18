@@ -39,6 +39,7 @@ return [
     'apply' => 'Apply',
     'reset' => 'Reset',
     'list' => 'List',
+    'select_region' => 'Select Region',
     'is_featured' => 'Is Featured',
     'create_new' => 'Create New',
     'id' => 'ID#',
