@@ -811,7 +811,7 @@
              </div>
              {{-- @endif --}}
              <div class="ask">
-                 <h5>{{ __("main.contact_us") }}</h5>
+                 <h5>{{ __('main.contact_us') }}</h5>
                  <form action="{{ route('contact_us.contact_us.store') }}" method="POST" class="form-contact"
                      data-parsley-validate>
                      @csrf
@@ -1054,16 +1054,16 @@
              @if (count($relates))
                  <div class="related">
                      <h3>{{ __('main.related_units') }}</h3>
-                     @for ($i = 0; $i < 3; $i++)
+                     @foreach ($relates as $key => $relate)
                          {{-- <div class="project">
-                             @include('front.components.unit', ['unit' => $relates[$i]])
+                             @include('front.components.unit', ['unit' => $relate])
                          </div> --}}
 
                          <!-- close project -->
                          <div class="project">
                              <!-- open project -->
                              <a href="single-list.html">
-                                 @forelse($relates[$i]->attachments as $attachment)
+                                 @forelse($relate->attachments as $attachment)
                                      @if ($loop->index == 0)
                                          <meta itemprop="image"
                                              content="{{ file_exists(public_path('/storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension)) ? asset('storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension) : $attachment->url }}" />
@@ -1075,79 +1075,82 @@
                              @empty
                                  <meta itemprop="image" content="{{ asset('front/img/logo_1.png') }}" />
                                  <img class="" onerror="this.remove()"
-                                     src="{{ asset('front/img/logo_1.png') }}" alt="{{ $relates[$i]->title }}"
+                                     src="{{ asset('front/img/logo_1.png') }}" alt="{{ $relate->title }}"
                                      itemprop="image">
                              @endforelse
                              <div class="overlay">
                                  <!-- open overlay -->
                                  <div class="details">
                                      <!-- open details -->
-                                     <h3 class="capitalize">{{ $relates[$i]->city->name }}</h3>
+                                     <h3 class="capitalize">{{ $relate->city->name }}</h3>
                                      <p class="price">{{ __('main.starting_price') }}</p>
-                                     <span>{{ $relates[$i]->price }} EGP</span>
+                                     <span>{{ $relate->price }} EGP</span>
                                  </div> <!-- close details -->
                              </div> <!-- close overlay -->
                          </a>
                      </div> <!-- close project -->
-                 @endfor
-             </div> <!-- close related -->
-         @endif
+                     @if ($key == 2)
+                     @break
+                 @endif
+             @endforeach
+         </div> <!-- close related -->
+     @endif
 
-     </div> <!-- close flex-box -->
- </div> <!-- close container -->
+ </div> <!-- close flex-box -->
+</div> <!-- close container -->
 </div> <!-- close single-list -->
 @push('scripts')
- <script src="https://maps.googleapis.com/maps/api/js?key={{ env('MAP_KEY') }}&callback=initMap&&libraries=places"
-     defer></script>
- <script>
-     //  GOOGLE MAPS API
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('MAP_KEY') }}&callback=initMap&&libraries=places"
+    defer></script>
+<script>
+    //  GOOGLE MAPS API
 
-     function initMap() {
-         var latLng;
-         @if ($single_unit->latitude && $single_unit->longitude)
-             latLng = {
-                 lat: @json($single_unit->latitude),
-                 lng: @json($single_unit->longitude)
-             }; // latitude and longitude
-         @endif
+    function initMap() {
+        var latLng;
+        @if ($single_unit->latitude && $single_unit->longitude)
+            latLng = {
+                lat: @json($single_unit->latitude),
+                lng: @json($single_unit->longitude)
+            }; // latitude and longitude
+        @endif
 
-         var map;
+        var map;
 
-         var options = {
-             zoom: 9,
-             center: latLng,
-             mapTypeId: 'roadmap', // hybrid , satellite , roadmap ,
-         };
+        var options = {
+            zoom: 9,
+            center: latLng,
+            mapTypeId: 'roadmap', // hybrid , satellite , roadmap ,
+        };
 
-         map = new google.maps.Map(document.getElementById("map"), options);
+        map = new google.maps.Map(document.getElementById("map"), options);
 
-         var marker = new google.maps.Marker({
-             position: latLng,
-             map: map,
-             icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-             animation: google.maps.Animation.BOUNCE,
-             title: '{{ $single_unit->title }}'
-         });
-
-
-         var infoWindow = new google.maps.InfoWindow({
-             content: '<p>{{ $single_unit->title }}</p>'
-         })
-
-         marker.addListener('click', function() {
-             infoWindow.open(map, marker);
-         });
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+            animation: google.maps.Animation.BOUNCE,
+            title: '{{ $single_unit->title }}'
+        });
 
 
-         google.maps.event.addListener(marker, 'click', function() {
-             var pos = map.getZoom();
-             map.setZoom(12);
-             map.setCenter(marker.getPosition());
-             window.setTimeout(function() {
-                 map.setZoom(pos);
-             }, 3000);
-         });
+        var infoWindow = new google.maps.InfoWindow({
+            content: '<p>{{ $single_unit->title }}</p>'
+        })
 
-     }
- </script>
+        marker.addListener('click', function() {
+            infoWindow.open(map, marker);
+        });
+
+
+        google.maps.event.addListener(marker, 'click', function() {
+            var pos = map.getZoom();
+            map.setZoom(12);
+            map.setCenter(marker.getPosition());
+            window.setTimeout(function() {
+                map.setZoom(pos);
+            }, 3000);
+        });
+
+    }
+</script>
 @endpush
