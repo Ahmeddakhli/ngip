@@ -162,6 +162,7 @@ return [
     'find_your_dream_house' => 'ابحث عن منزل أحلامك',
     'features' => 'الميزات',
     'scroll_down' => 'حرك لأسفل',
+    'scroll' => 'حرك',
     'oldest' => 'الاقدم',
     'dark_mode' => 'الوضع المظلم',
     'light_mode' => 'الوضع المضئ',

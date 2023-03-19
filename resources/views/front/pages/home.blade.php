@@ -37,6 +37,40 @@ $page_name = 'home';
     <!-- END DEVELOPERS -->
     @include('front.partials.home.blogs') --}}
 
+  <div class="scroll wow bounce" data-wow-duration="1.5s" data-wow-iteration="3">
+    <!-- open scroll -->
+    <div class="chevron">
+      <!-- open chevron -->
+      <ul>
+        <li>
+          <a href="#"><span></span></a>
+        </li>
+        <li>
+          <a href="#our-features"><span></span></a>
+        </li>
+        <li>
+          <a href="#news"><span></span></a>
+        </li>
+        <li>
+          <a href="#featured"><span></span></a>
+        </li>
+        <li>
+          <a href="#srevices"><span></span></a>
+        </li>
+        <li>
+          <a href="#footer" class="active"><span></span></a>
+        </li>
+      </ul>
+    </div>
+    <!-- close chevron -->
+
+    <div class="scrolldown">
+      <!-- open scrolldown -->
+      <a class="down btn"> <span class="text">{{ __('main.scroll') }}</span></a>
+    </div>
+    <!-- close scrolldown -->
+  </div>
+
 @endsection
 @push('scripts')
 

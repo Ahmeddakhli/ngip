@@ -40,7 +40,7 @@
 							@endhaspermission
 							@haspermission('index-inventory-sell-requests')
 							<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('inventory.sell_requests.index')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">{{__('inventory::inventory.sell_requests')}}</span></a></li>
-							@endhaspermission 
+							@endhaspermission
 							@haspermission('index-inventory-developers')
 							<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('inventory.developers.index')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">{{__('inventory::inventory.developers')}}</span></a></li>
 							@endhaspermission
@@ -72,9 +72,9 @@
 				{{--@haspermission('index-events')
 				<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('events.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-presentation"></i><span class="kt-menu__link-text">{{__('events::event.events')}}</span></a></li>
 				@endhaspermission--}}
-				@haspermission('index-careers')
+				{{-- @haspermission('index-careers')
 				<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('careers.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-soft-icons-1"></i><span class="kt-menu__link-text">{{__('careers::career.careers')}}</span></a></li>
-				@endhaspermission
+				@endhaspermission --}}
 				{{--@haspermission('index-meetings')
 				<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('meetings.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-layers"></i><span class="kt-menu__link-text">{{__('meetings::meeting.meeting')}}</span></a></li>
 				@endhaspermission--}}

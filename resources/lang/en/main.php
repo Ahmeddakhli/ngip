@@ -153,6 +153,7 @@ return [
     'about_unit' => 'about unit',
     'features' => 'Features',
     'scroll_down' => 'SCROLL DOWN',
+    'scroll' => 'SCROLL',
     'oldest' => 'Oldest',
     'newest' => 'Newest',
     'sort' => 'Sort',
