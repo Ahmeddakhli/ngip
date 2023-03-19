@@ -167,12 +167,12 @@ break;
       // Send the request
       $.post(url, data, headers).done(function(response) {
 
-        // Unblock UI     
+        // Unblock UI
         $.unblockUI();
 
         // Notification message
         if (response.message) {
-          // Empty notificaion messages              
+          // Empty notificaion messages
           $('.messages').empty();
 
           // Notification type
@@ -197,7 +197,7 @@ break;
 
         }
       }).fail(function(xhr, error_text, statusText) {
-        // Unblock UI            
+        // Unblock UI
         $.unblockUI();
 
         // Display notificaion

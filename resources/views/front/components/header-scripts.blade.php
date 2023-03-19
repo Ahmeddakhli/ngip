@@ -9,6 +9,7 @@
 <meta name="yandex-verification" content="" />
 <meta name="google-site-verification" content="" />
 <link rel="canonical" href="{{ Request::fullUrl() }}">
+<link rel="icon" href="{{asset('front/favicon.ico')}}">
 @stack('meta')
 
 <title>@yield('page_name')</title>

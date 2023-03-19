@@ -105,7 +105,7 @@ setLocale(LC_TIME, 'ar');
 <!--end::Layout Skins -->
 
 <!-- Favicon -->
-<link rel="icon" href="{{URL::asset('front/favicon.ico')}}">
+<link rel="icon" href="{{asset('front/favicon.ico')}}">
 
 <!-- TOKEN -->
 <meta name="csrf-token" content="{{ csrf_token() }}">

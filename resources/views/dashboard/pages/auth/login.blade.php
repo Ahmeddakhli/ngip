@@ -79,7 +79,7 @@
 			background: #a7a5a5;
 		}
 	</style>
-	<link rel="icon" href="{{URL::asset('front/favicon.ico')}}">
+	<link rel="icon" href="{{asset('front/favicon.ico')}}">
 
 	<!-- Favicon -->
 	<!-- <link rel="shortcut icon" href="{{asset('8x/assets/img/favicon.ico')}}" type="image/x-icon" />
