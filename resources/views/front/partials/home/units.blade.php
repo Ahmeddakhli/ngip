@@ -35,8 +35,11 @@
              <h2 class="capitalize"><a href="#">{{ __('main.featured_units') }}</a></h2>
              <div class="flex-box">
                  <!-- open flex-box -->
-                 @for ($i = 0; $i < 3; $i++)
+                 @for ($i = 0; $i < $units; $i++)
                      @include('front.components.unit', ['unit' => $units[$i]])
+                     @if ($i==2)
+                     @break
+                     @endif
                  @endfor
 
                  <!-- close feature-item -->
