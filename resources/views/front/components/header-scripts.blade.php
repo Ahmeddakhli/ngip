@@ -19,7 +19,7 @@
 {{--
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"> --}}
 
-<link rel="shortcut icon" href="{{asset('front/img/logo_2.png')}}" />
+{{-- <link rel="shortcut icon" href="{{asset('front/img/logo_2.png')}}" /> --}}
 {{-- <link rel="stylesheet" href="{{ URL::asset('front/css/bootstrap.min.css') }}?ver={{ env('FILES_VER') }}"> --}}
 {{-- <link rel="stylesheet" href="{{ URL::asset('front/css/index.css') }}?ver={{ env('FILES_VER') }}"> --}}
 {{-- <link rel="stylesheet" href="{{ URL::asset('front/css/addition.css') }}?ver={{ env('FILES_VER') }}"> --}}
